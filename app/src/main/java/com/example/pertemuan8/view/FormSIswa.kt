@@ -74,7 +74,7 @@ fun FormIsian(
                     .width(width = 250.dp),
                 label = { Text(text = "Nama Lengkap") },
                 onValueChange = {
-                    txtNama
+                    txtNama = it
                 },
             )
             HorizontalDivider(
