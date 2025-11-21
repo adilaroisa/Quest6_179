@@ -11,6 +11,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.pertemuan8.model.DataJK
+import com.example.pertemuan8.view.FormIsian
+import com.example.pertemuan8.view.TampilData
 import com.example.pertemuan8.viewnodel.SiswaViewModel
 
 enum class Navigasi {
@@ -33,16 +36,24 @@ fun DataApp(
             startDestination = Navigasi.Formulirku.name,
             modifier = Modifier.padding(paddingValues = isiRuang)
         ) {
+            // edit 3 : tambahkan variable konteks
+
             composable(route = Navigasi.Formulirku.name) {
-                _root_ide_package_.com.example.pertemuan8.view.FormIsian(
-                    //pilihanJK = JenisJK.map { id -> konteks.resources.getString(id) },
+                FormIsian(
+                    // edit 4 : parameter pilihanJK dan onSubmitButtonClicked
+                    // Karena isinya sudah ["Laki-laki", "Perempuan"] (String)
+                    jenisK = DataJK.JenisK,
+
                     OnSubmitBtnClick = {
-                        navController.navigate(route = Navigasi.Detail.name)
+                        viewModel.setSiswa(it)
+                        navController.navigate(Navigasi.Detail.name)
                     }
                 )
             }
             composable(route = Navigasi.Detail.name) {
-                _root_ide_package_.com.example.pertemuan8.view.TampilData(
+                TampilData(
+                    // edit 5 : parameter statusUiSiswa
+                    statusUiSiswa = uiState.value,
                     onBackBtnClick = {
                         cancelAndBackToFormulir(navController)
                     }
