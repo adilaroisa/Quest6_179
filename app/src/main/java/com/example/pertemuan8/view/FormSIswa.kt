@@ -19,6 +19,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,9 +35,18 @@ import com.example.pertemuan8.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormIsian(
-    jenisK:List<String> = listOf("Laki-laki", "Perempuan"),
-    OnSubmitBtnClick: () -> Unit
+    jenisK:List<String>,
+    OnSubmitBtnClick: (MutableList<String>) -> Unit,
+    modifier: Modifier = Modifier
 ) {
+    // edit 2: tambahkan 4 variable dibawah ini
+    var txtNama by rememberSaveable { mutableStateOf(value = "") }
+    var txtAlamat by remember { mutableStateOf(value = "") }
+    var txtGender by remember { mutableStateOf(value = "") }
+
+    val listData: MutableList<String> = mutableListOf(txtNama, txtGender, txtAlamat)
+
+
     Scaffold(
         modifier = Modifier,
         topBar = {
