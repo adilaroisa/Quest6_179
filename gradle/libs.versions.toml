@@ -11,6 +11,7 @@ composeBom = "2024.09.00"
 #Tambahkan Navigation
 navigation = "2.9.5"
 
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -28,6 +29,9 @@ androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-te
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 #tambahkan lib Navigation
 androidx-navigation-compose = {module = "androidx.navigation:navigation-compose", version.ref = "navigation"}
+
+lifecycle-viewmodel-compose = {module = "androidx.lifecycle:lifecycle-viewmodel-compose",version = "2.9.4"}
+lifecycle-runtime-compose = {module = "androidx.lifecycle:lifecycle-runtime-compose",version = "2.9.4"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
